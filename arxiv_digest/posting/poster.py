@@ -23,7 +23,7 @@ from arxiv_digest.fetching.fetcher import Paper
 logger = logging.getLogger(__name__)
 
 _TELEGRAM_API_BASE = "https://api.telegram.org/bot{token}/{method}"
-_MESSAGE_DELAY_SECONDS = 1.2  # stay well under rate limits
+_MESSAGE_DELAY_SECONDS = 3  # stay well under rate limits
 
 # Category display labels
 _CATEGORY_LABELS = {

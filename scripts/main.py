@@ -19,7 +19,7 @@ Run:
 import argparse
 import logging
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from config import load_config
 from arxiv_digest.fetching.fetcher import fetch_papers
@@ -64,7 +64,7 @@ def main() -> None:
             logger.error("Invalid date format: %s. Use YYYY-MM-DD.", args.date)
             sys.exit(1)
     else:
-        target_date = date.today()
+        target_date = date.today() - timedelta(days=1)
 
     logger.info("=== arXiv Digest — %s ===", target_date.isoformat())
 
