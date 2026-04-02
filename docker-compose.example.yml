@@ -1,0 +1,16 @@
+services:
+  arxiv-digest:
+    build: .
+    container_name: arxiv-digest
+    restart: "no"        # triggered by host cron; exits when done
+    env_file: .env
+    volumes:
+      - /home/cotenthusiast/data/arxiv-digest:/app/data  # persist CSV log across runs
+
+# Host cron entries (crontab -e):
+#
+#   Daily digest — runs at 8am every day
+#   0 8 * * *   docker compose -f /path/to/docker-compose.yml run --rm arxiv-digest python scripts/main.py
+#
+#   Weekly roundup — runs at 9am every Sunday
+#   0 9 * * 0   docker compose -f /path/to/docker-compose.yml run --rm arxiv-digest python scripts/weekly.py
